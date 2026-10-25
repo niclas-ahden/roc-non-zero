@@ -8,8 +8,8 @@ See the documentation at [https://niclas-ahden.github.io/roc-non-zero/](https://
 
 ```roc
 app [main!] {
-	pf: platform "https://github.com/niclas-ahden/basic-cli/releases/download/0.23.0/7NpDhuqoqGFedmVLvmm1zjq37GCmaFGzwr5sz4ch9wTK.tar.zst",
-	nz: "https://github.com/niclas-ahden/roc-non-zero/releases/download/0.1.0/3GhZZpgGxxb5u1uYgK6BCQtfS41C2kyjwFsS1dFQFDwy.tar.zst",
+	pf: platform "https://github.com/roc-lang/basic-cli/releases/download/0.26.0/GddgvsGjiNXrHFW6au5i5dUDbTs8FinQdrgE2Gqmw53t.tar.zst",
+	nz: "https://github.com/niclas-ahden/roc-non-zero/releases/download/0.1.1/3GhZZpgGxxb5u1uYgK6BCQtfS41C2kyjwFsS1dFQFDwy.tar.zst",
 }
 
 import pf.Stdout
