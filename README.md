@@ -15,31 +15,28 @@ app [main!] {
 import pf.Stdout
 import nz.NonZero
 
-# Look at this spectacular line!
-Ok(non_zero) = NonZero.new(42)
-
-# Wait, `NonZero.new` returns an error if you give it a zero... How could
-# we just destructure that as `Ok(non_zero)` without dealing with that potential
-# `Err`?
-#
-# Well, Roc has a great feature! It evaluates top-level values like this one
-# during compilation. That means it'll look at the number 42 above and say "this
-# can't possibly change at runtime, so I'll evaluate `NonZero.new(42)` right now
-# during compilation". Since 42 is non-zero, the _only_possible_result_ is `Ok`.
-# It _cannot_ error, so Roc lets us destructure it right away without error
-# handling... Mind. Blown. 🤯.
-#
-# But what if it was zero?
-#
-#     Ok(non_zero) = NonZero.new(0)
-#
-# That'd give you an error at compile-time. How great is that?
-#
-# This only works at the top level. Inside a function like `main!`, handle the
-# `Err` as usual.
-
 main! = |args| {
-	# `NonZero` is really useful for eliminating error branches which you know
+	# Look at this spectacular line!
+	Ok(non_zero) = NonZero.new(42)
+
+	# Wait, `NonZero.new` returns an error if you give it a zero... How could
+	# we just destructure that as `Ok(non_zero)` without dealing with that potential
+	# `Err`?
+	#
+	# Well, Roc has a great feature! It'll figure out which values can be known at
+	# compile-time and it'll evaluate those values during compilation. That means it'll
+	# look at the number 42 above and say "this can't possibly change at runtime, so I'll
+	# evaluate `NonZero.new(42)` right now during compilation". Since 42 is non-zero, the
+	# _only_possible_result_ is `Ok`. It _cannot_ error, so Roc lets us destructure
+	# it right away without error handling... Mind. Blown. 🤯.
+	#
+	# But what if it was zero?
+	#
+	#     Ok(non_zero) = NonZero.new(0)
+	#
+	# That'd give you an error at compile-time. How great is that?
+	#
+	# That makes `NonZero` really useful for eliminating error branches which you know
 	# can never happen. We can for example write a function for safe division:
 
 	safe_div : U64, NonZero(U64) -> U64
